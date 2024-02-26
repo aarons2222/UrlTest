@@ -10,20 +10,29 @@
 
 <form id="loginForm">
   <label for="uniqueID">UniqueID:</label>
-  <input type="text" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID" oninput="generateLink()">
+  <input type="text" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID" oninput="updatePreview()">
   <br><br>
   <label for="pin">PIN:</label>
-  <input type="text" id="pin" name="pin" placeholder="Enter your PIN" oninput="generateLink()">
+  <input type="text" id="pin" name="pin" placeholder="Enter your PIN" oninput="updatePreview()">
   <br><br>
   <button type="button" onclick="generateLink()">Generate Link</button>
 </form>
 
-<p>Generated URL:</p>
+<p>Generated URL Preview:</p>
 <p id="linkPreview"></p>
 
 <p id="linkContainer"></p>
 
 <script>
+function updatePreview() {
+  var uniqueID = document.getElementById("uniqueID").value;
+  var pin = document.getElementById("pin").value;
+  
+  var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
+  
+  document.getElementById("linkPreview").textContent = link;
+}
+
 function generateLink() {
   var uniqueID = document.getElementById("uniqueID").value;
   var pin = document.getElementById("pin").value;
@@ -36,8 +45,6 @@ function generateLink() {
   
   document.getElementById("linkContainer").innerHTML = ""; // Clear previous content
   document.getElementById("linkContainer").appendChild(linkElement);
-  
-  document.getElementById("linkPreview").textContent = link;
 }
 </script>
 

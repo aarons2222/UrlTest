@@ -5,38 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Login Test</title>
-<!-- Bootstrap CSS -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="container mt-5">
+<div style="margin: 20px;">
   <form id="loginForm">
-    <div class="form-group">
-      <label for="uniqueID">UniqueID:</label>
-      <input type="text" class="form-control" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID" oninput="updatePreview()">
-    </div>
-    <div class="form-group">
-      <label for="pin">PIN:</label>
-      <input type="text" class="form-control" id="pin" name="pin" placeholder="Enter your PIN" oninput="updatePreview()">
-    </div>
-    <button type="button" class="btn btn-primary" onclick="generateLink()">Generate Link</button>
+    <label for="uniqueID">UniqueID:</label><br>
+    <input type="text" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;" oninput="updatePreview()"><br>
+    
+    <label for="pin">PIN:</label><br>
+    <input type="text" id="pin" name="pin" placeholder="Enter your PIN" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;" oninput="updatePreview()"><br>
+    
+    <button type="button" onclick="generateLink()" style="width: 200px; height: 40px; font-size: 16px;">Generate Link</button>
   </form>
 
-  <div class="mt-3">
+  <div style="margin-top: 20px;">
     <p>Generated URL Preview:</p>
-    <p id="linkPreview" class="bg-light p-2"></p>
+    <p id="linkPreview" style="background-color: #f0f0f0; padding: 10px;"></p>
   </div>
 
-  <div class="mt-3">
+  <div style="margin-top: 20px;">
     <p id="linkContainer"></p>
   </div>
 </div>
-
-<!-- Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
 function updatePreview() {

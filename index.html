@@ -10,13 +10,16 @@
 
 <form id="loginForm">
   <label for="uniqueID">UniqueID:</label>
-  <input type="text" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID">
+  <input type="text" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID" oninput="generateLink()">
   <br><br>
   <label for="pin">PIN:</label>
-  <input type="text" id="pin" name="pin" placeholder="Enter your PIN">
+  <input type="text" id="pin" name="pin" placeholder="Enter your PIN" oninput="generateLink()">
   <br><br>
   <button type="button" onclick="generateLink()">Generate Link</button>
 </form>
+
+<p>Generated URL:</p>
+<p id="linkPreview"></p>
 
 <p id="linkContainer"></p>
 
@@ -33,6 +36,8 @@ function generateLink() {
   
   document.getElementById("linkContainer").innerHTML = ""; // Clear previous content
   document.getElementById("linkContainer").appendChild(linkElement);
+  
+  document.getElementById("linkPreview").textContent = link;
 }
 </script>
 

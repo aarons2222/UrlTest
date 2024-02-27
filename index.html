@@ -40,10 +40,14 @@ function generateLink() {
   
   document.getElementById("linkPreview").innerHTML = '';
   document.getElementById("linkPreview").appendChild(linkElement);
+  
 }
 
 function copyToClipboard() {
   var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');
+
+
+  navigator.clipboard.writeText(link)
   
   // Create a temporary textarea element
   var tempTextArea = document.createElement("textarea");

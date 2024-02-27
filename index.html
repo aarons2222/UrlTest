@@ -37,9 +37,21 @@ function generateLink() {
   linkElement.setAttribute("href", link);
   linkElement.setAttribute("target", "_blank");
   linkElement.textContent = "login";
+  linkElement.setAttribute("onclick", copyURI(link))
+
   
   document.getElementById("linkPreview").innerHTML = '';
   document.getElementById("linkPreview").appendChild(linkElement);
+}
+
+
+function copyURI(evt) {
+    evt.preventDefault();
+    navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
+      /* clipboard successfully set */
+    }, () => {
+      /* clipboard write failed */
+    });
 }
 
 function copyToClipboard() {

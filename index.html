@@ -37,7 +37,7 @@ function generateLink() {
 }
 
 function copyToClipboard() {
-  var link = document.getElementById("linkPreview").querySelector('a').textContent;
+  var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');
   navigator.clipboard.writeText(link).then(function() {
     alert("Link copied to clipboard!");
   }, function(err) {

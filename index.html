@@ -37,8 +37,8 @@ function generateLink() {
 }
 
 function copyToClipboard() {
-  var linkText = document.getElementById("linkPreview").textContent;
-  navigator.clipboard.writeText(linkText).then(function() {
+  var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');
+  navigator.clipboard.writeText(link).then(function() {
     alert("Link copied to clipboard!");
   }, function(err) {
     console.error('Unable to copy to clipboard: ', err);

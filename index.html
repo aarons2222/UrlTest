@@ -35,9 +35,10 @@ function generateLink() {
   
   var linkElement = document.createElement("a");
   linkElement.setAttribute("href", link);
+    linkElement.setAttribute("onclick", copyURI(link))
   linkElement.setAttribute("target", "_blank");
   linkElement.textContent = "login";
-  linkElement.setAttribute("onclick", copyURI(link))
+
 
   
   document.getElementById("linkPreview").innerHTML = '';

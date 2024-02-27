@@ -22,7 +22,6 @@
 
   <div style="margin-top: 20px;">
     <p>Generated URL Preview:</p>
-    <!-- Wrap the generated link in an anchor tag -->
     <p id="linkPreview" style="background-color: #f0f0f0; padding: 10px;"></p>
   </div>
 </div>
@@ -34,18 +33,25 @@ function generateLink() {
   
   var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
-  // Set the generated link as HTML content of the paragraph
-  document.getElementById("linkPreview").innerHTML = '<a href="' + link + '">'Login'</a>';
+  document.getElementById("linkPreview").innerHTML = '<a href="' + link + '" target="_blank">login</a>';
 }
 
-
 function copyToClipboard() {
-  var linkText = document.getElementById("linkPreview").textContent;
-  navigator.clipboard.writeText(linkText).then(function() {
-    alert("Link copied to clipboard!");
-  }, function(err) {
-    console.error('Unable to copy to clipboard: ', err);
-  });
+  var link = document.getElementById("linkPreview").querySelector('a').outerHTML;
+  
+  // Create a temporary textarea element
+  var tempTextArea = document.createElement("textarea");
+  tempTextArea.textContent = link;
+  document.body.appendChild(tempTextArea);
+  
+  // Select and copy the link
+  tempTextArea.select();
+  document.execCommand("copy");
+  
+  // Remove the temporary textarea
+  document.body.removeChild(tempTextArea);
+  
+  alert("Link copied to clipboard!");
 }
 </script>
 

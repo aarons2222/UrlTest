@@ -33,25 +33,13 @@ function generateLink() {
   
   var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
-  document.getElementById("linkPreview").innerHTML = '<a href="' + link + '" target="_blank">' + link + '</a>';
+  document.getElementById("linkPreview").textContent = link;
 }
 
 function copyToClipboard() {
-  var link = document.getElementById("linkPreview").querySelector('a').outerHTML;
-  
-  // Create a temporary textarea element
-  var tempTextArea = document.createElement("textarea");
-  tempTextArea.textContent = link;
-  document.body.appendChild(tempTextArea);
-  
-  // Select and copy the link
-  tempTextArea.select();
-  document.execCommand("copy");
-  
-  // Remove the temporary textarea
-  document.body.removeChild(tempTextArea);
-  
-  alert("Link copied to clipboard!");
+  var linkText = document.getElementById("linkPreview").textContent;
+  // Prompt user to manually copy the link
+  alert("To copy the link, long press on the link below and select 'Copy'.\n\n" + linkText);
 }
 </script>
 

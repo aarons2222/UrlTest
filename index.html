@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Login Test</title>
 </head>
@@ -33,13 +33,25 @@ function generateLink() {
   
   var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
-  document.getElementById("linkPreview").textContent = link;
+  document.getElementById("linkPreview").innerHTML = '<a href="' + link + '" target="_blank">' + link + '</a>';
 }
 
 function copyToClipboard() {
-  var linkText = document.getElementById("linkPreview").textContent;
-  // Alert user to manually copy link
-  alert("Please manually copy the link below:\n\n" + linkText);
+  var link = document.getElementById("linkPreview").querySelector('a').outerHTML;
+  
+  // Create a temporary textarea element
+  var tempTextArea = document.createElement("textarea");
+  tempTextArea.textContent = link;
+  document.body.appendChild(tempTextArea);
+  
+  // Select and copy the link
+  tempTextArea.select();
+  document.execCommand("copy");
+  
+  // Remove the temporary textarea
+  document.body.removeChild(tempTextArea);
+  
+  alert("Link copied to clipboard!");
 }
 </script>
 

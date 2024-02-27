@@ -44,19 +44,10 @@ function generateLink() {
   document.getElementById("linkPreview").appendChild(linkElement);
 
 
-  <a href="' + artworkUrl + '" onclick="copyURI(event)">Copy cover URL</a>
 
 }
 
 
-function copyURI(evt) {
-    evt.preventDefault();
-    navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
-      /* clipboard successfully set */
-    }, () => {
-      /* clipboard write failed */
-    });
-}
 function copyToClipboard() {
   var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');
   

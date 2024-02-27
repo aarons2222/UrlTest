@@ -33,11 +33,17 @@ function generateLink() {
   
   var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
-  document.getElementById("linkPreview").innerHTML = '<a href="' + link + '" target="_blank">login</a>';
+  var linkElement = document.createElement("a");
+  linkElement.setAttribute("href", link);
+  linkElement.setAttribute("target", "_blank");
+  linkElement.textContent = "login";
+  
+  document.getElementById("linkPreview").innerHTML = '';
+  document.getElementById("linkPreview").appendChild(linkElement);
 }
 
 function copyToClipboard() {
-  var link = document.getElementById("linkPreview").querySelector('a').outerHTML;
+  var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');
   
   // Create a temporary textarea element
   var tempTextArea = document.createElement("textarea");

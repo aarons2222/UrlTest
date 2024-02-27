@@ -37,16 +37,10 @@ function generateLink() {
   linkElement.setAttribute("href", link);
   linkElement.setAttribute("target", "_blank");
   linkElement.textContent = "login";
-
-
   
   document.getElementById("linkPreview").innerHTML = '';
   document.getElementById("linkPreview").appendChild(linkElement);
-
-
-
 }
-
 
 function copyToClipboard() {
   var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');

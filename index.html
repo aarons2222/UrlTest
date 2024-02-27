@@ -33,7 +33,7 @@ function generateLink() {
   
   var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
-  document.getElementById("linkPreview").textContent = link;
+  document.getElementById("linkPreview").innerHTML = '<a href="' + link + '" target="_blank">' + link + '</a>';
 }
 
 function copyToClipboard() {

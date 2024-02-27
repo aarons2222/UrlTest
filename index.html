@@ -34,9 +34,10 @@ function generateLink() {
   
   var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
-  // Set the generated link as the href attribute of the anchor tag
+  // Set the generated link as HTML content of the paragraph
   document.getElementById("linkPreview").innerHTML = '<a href="' + link + '">' + link + '</a>';
 }
+
 
 function copyToClipboard() {
   var linkText = document.getElementById("linkPreview").textContent;

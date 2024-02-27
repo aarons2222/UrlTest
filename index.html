@@ -22,6 +22,7 @@
 
   <div style="margin-top: 20px;">
     <p>Generated URL Preview:</p>
+    <!-- Wrap the generated link in an anchor tag -->
     <p id="linkPreview" style="background-color: #f0f0f0; padding: 10px;"></p>
   </div>
 </div>
@@ -33,7 +34,8 @@ function generateLink() {
   
   var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
-  document.getElementById("linkPreview").textContent = link;
+  // Set the generated link as the href attribute of the anchor tag
+  document.getElementById("linkPreview").innerHTML = '<a href="' + link + '">' + link + '</a>';
 }
 
 function copyToClipboard() {

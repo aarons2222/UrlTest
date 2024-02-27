@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Login Test</title>
 </head>
@@ -17,7 +17,7 @@
     <input type="text" id="pin" name="pin" placeholder="Enter your PIN" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;"><br>
     
     <button type="button" onclick="generateLink()" style="width: 200px; height: 40px; font-size: 16px;">Generate Link</button>
-    <button type="button" onclick="copyToClipboard()" style="width: 200px; height: 40px; font-size: 16px;">Copy to Clipboard</button>
+    <button type="button" onclick="copyLinkAsAnchor()" style="width: 200px; height: 40px; font-size: 16px;">Copy Link as Anchor</button>
   </form>
 
   <div style="margin-top: 20px;">
@@ -36,10 +36,24 @@ function generateLink() {
   document.getElementById("linkPreview").textContent = link;
 }
 
-function copyToClipboard() {
+function copyLinkAsAnchor() {
   var linkText = document.getElementById("linkPreview").textContent;
-  // Prompt user to manually copy the link
-  alert("To copy the link, long press on the link below and select 'Copy'.\n\n" + linkText);
+  
+  // Create a temporary anchor element
+  var tempAnchor = document.createElement("a");
+  tempAnchor.href = linkText;
+  tempAnchor.style.position = "fixed";
+  tempAnchor.style.left = "-9999px";
+  tempAnchor.textContent = "Temporary Link";
+  
+  // Append the anchor to the body
+  document.body.appendChild(tempAnchor);
+  
+  // Simulate a click on the anchor
+  tempAnchor.click();
+  
+  // Remove the anchor from the DOM
+  document.body.removeChild(tempAnchor);
 }
 </script>
 

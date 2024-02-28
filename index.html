@@ -47,6 +47,7 @@ function generateLink() {
 }
 
 function copyToClipboard() {
+  generateLink()
   var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');
 
 

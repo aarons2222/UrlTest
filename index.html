@@ -43,14 +43,12 @@ function generateLink() {
   document.getElementById("linkPreview").innerHTML = '';
   document.getElementById("linkPreview").appendChild(linkElement);
   
-  // Generate QR code
+  // Generate QR code as an image
   var qrCodeDiv = document.getElementById("qrcode");
   qrCodeDiv.innerHTML = ""; // Clear previous QR code if any
-  var qrCode = new QRCode(qrCodeDiv, {
-    text: link,
-    width: 128,
-    height: 128,
-  });
+  var qrCodeImg = document.createElement("img");
+  qrCodeImg.setAttribute("src", "https://api.qrserver.com/v1/create-qr-code/?data=" + encodeURIComponent(link) + "&size=128x128");
+  qrCodeDiv.appendChild(qrCodeImg);
 }
 
 function copyToClipboard() {

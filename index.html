@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Login Test</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -23,9 +24,7 @@
   <div style="margin-top: 20px;">
     <p>Generated URL Preview:</p>
     <p id="linkPreview" style="background-color: #f0f0f0; padding: 10px;"></p>
-
-
-
+    <div id="qrcode"></div> <!-- QR code container -->
   </div>
 </div>
 
@@ -44,6 +43,14 @@ function generateLink() {
   document.getElementById("linkPreview").innerHTML = '';
   document.getElementById("linkPreview").appendChild(linkElement);
   
+  // Generate QR code
+  var qrCodeDiv = document.getElementById("qrcode");
+  qrCodeDiv.innerHTML = ""; // Clear previous QR code if any
+  var qrCode = new QRCode(qrCodeDiv, {
+    text: link,
+    width: 128,
+    height: 128,
+  });
 }
 
 function copyToClipboard() {

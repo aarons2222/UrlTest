@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launch Eloq App with Custom URL Scheme</title>
+    <title>Reset Password</title>
 </head>
 <body>
-    <h1>Click the button below to launch Eloq app with custom URL scheme:</h1>
-
-    <script>
-        function launchEloqApp() {
-            // Replace 'uniqueID' and 'pin' with your actual values
-            var uniqueID = '123456';
-            var pin = '7890';
-            
-            var customUrlScheme = "eloqapp://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
-            
-            // Open Eloq app with custom URL scheme
-            window.location.href = customUrlScheme;
-        }
-    </script>
-
-    <button onclick="launchEloqApp()">Launch Eloq App</button>
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #333;">Reset Password</h2>
+        <p>Hello [Recipient's Name],</p>
+        
+        <p>To reset your password, please click the button below:</p>
+        
+        <a href="exampleapp://resetpassword/token" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none;">Reset Your Password</a>
+        
+        <p>If clicking the link above does not work, please copy and paste the following URL into your browser's address bar:</p>
+        <p>exampleapp://resetpassword/token</p>
+        
+        <p>If you encounter any issues or have any questions, feel free to reach out.</p>
+        
+        <p>Best regards,<br/>[Your Name]</p>
+    </div>
 </body>
 </html>

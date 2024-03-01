@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch eLOE</title>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 50px;">
+        <h1>Thank you for installing elOW</h1>
+        <p>Please click the button below to login</p>
+        <button onclick="launchApp()">Login</button>
+    </div>
+
+    <script>
+        function launchApp() {
+            var appScheme = "eloq://login";
+            var urlParams = new URLSearchParams(window.location.search);
+            var uniqueID = urlParams.get('UNIQUEID');
+            var pin = urlParams.get('PIN');
+            
+            if (uniqueID && pin) {
+                appScheme += "?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
+            }
+            
+            window.location.href = appScheme;
+        }
+    </script>
+</body>
+</html>

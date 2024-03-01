@@ -14,7 +14,7 @@
     <label for="uniqueID">UniqueID:</label><br>
     <input type="text" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;"><br>
 
-        <a href="mailto:recipient@example.com?subject=Subject&body=Click%20the%20link%20below%20to%20open%20the%20custom%20URL:%0A%0Ayourcustomurlscheme://yourparameters">Click here to open the custom URL</a>
+    <a href="#" id="customUrlLink" style="margin-bottom: 10px; display: block;">Click here to open the custom URL</a>
 
     <label for="pin">PIN:</label><br>
     <input type="text" id="pin" name="pin" placeholder="Enter your PIN" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;"><br>
@@ -37,7 +37,7 @@ function generateLink() {
   var uniqueID = document.getElementById("uniqueID").value;
   var pin = document.getElementById("pin").value;
   
-  var link = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
+  var link = "yourcustomurlscheme://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
   var linkElement = document.createElement("a");
   linkElement.setAttribute("href", link);
@@ -53,11 +53,14 @@ function generateLink() {
   var qrCodeImg = document.createElement("img");
   qrCodeImg.setAttribute("src", "https://api.qrserver.com/v1/create-qr-code/?data=" + encodeURIComponent(link) + "&size=128x128");
   qrCodeDiv.appendChild(qrCodeImg);
+
+  // Update mailto link
+  var mailtoLink = "mailto:recipient@example.com?subject=Subject&body=Click%20the%20link%20below%20to%20open%20the%20custom%20URL:%0A%0A" + encodeURIComponent(link);
+  document.getElementById("customUrlLink").setAttribute("href", mailtoLink);
 }
 
 function copyToClipboard() {
   var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');
-
 
   navigator.clipboard.writeText(link)
   

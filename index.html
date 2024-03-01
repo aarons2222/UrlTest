@@ -54,8 +54,8 @@ function generateLink() {
   qrCodeImg.setAttribute("src", "https://api.qrserver.com/v1/create-qr-code/?data=" + encodeURIComponent(link) + "&size=128x128");
   qrCodeDiv.appendChild(qrCodeImg);
 
-  // Update mailto link with embedded link
-  var mailtoLink = "mailto:recipient@example.com?subject=Subject&body=Click%20the%20link%20below%20to%20open%20the%20custom%20URL:%0A%0A<a href='" + encodeURIComponent(link) + "'>Click here to open the custom URL</a>";
+  // Update mailto link
+  var mailtoLink = "mailto:to@email.com?subject=A%20Body%20with%20a%20url.&body=https%3A%2F%2Fwww.twixlmedia.com";
   document.getElementById("customUrlLink").setAttribute("href", mailtoLink);
 }
 

@@ -72,7 +72,12 @@ function copyToClipboard() {
   
   alert("Link copied to clipboard!");
 }
-</script>
 
-</body>
-</html>
+// Open email client when customUrlLink is clicked
+document.getElementById("customUrlLink").addEventListener("click", function(event) {
+  var customUrl = event.target.getAttribute("href");
+  var emailWindow = window.open(customUrl, '_blank');
+  if (emailWindow) {
+    emailWindow.focus();
+  } else {
+    alert('Pl

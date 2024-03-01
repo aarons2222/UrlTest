@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launch Eloq App</title>
+    <title>Launch Eloq App with Custom URL Scheme</title>
 </head>
 <body>
+    <h1>Click the button below to launch Eloq app with custom URL scheme:</h1>
 
     <script>
         function launchEloqApp() {
@@ -13,7 +14,7 @@
             var uniqueID = '123456';
             var pin = '7890';
             
-            var customUrlScheme = "eloq://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
+            var customUrlScheme = "eloqapp://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
             
             // Open mail client with custom URL scheme
             var mailtoLink = "mailto:recipient@example.com?subject=Launch Eloq App&body=<a href='" + customUrlScheme + "'>Click here to launch Eloq App</a>";

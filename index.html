@@ -13,7 +13,7 @@
     <label for="uniqueID">UniqueID:</label><br>
     <input type="text" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;"><br>
 
-    <a href="#" id="customUrlLink" style="margin-bottom: 10px; display: block;">Click here to open the custom URL</a>
+    <a href="#" id="customUrlLink" style="margin-bottom: 10px; display: block;">Click here to login to eloq</a>
 
     <label for="pin">PIN:</label><br>
     <input type="text" id="pin" name="pin" placeholder="Enter your PIN" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;"><br>
@@ -35,18 +35,19 @@ function generateLink() {
   var uniqueID = document.getElementById("uniqueID").value;
   var pin = document.getElementById("pin").value;
   
-  var link = "myapp://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
+  var customUrlScheme = "myapp://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
   var linkElement = document.createElement("a");
-  linkElement.setAttribute("href", link);
+  linkElement.setAttribute("href", customUrlScheme);
   linkElement.setAttribute("target", "_blank");
-  linkElement.textContent = "login";
+  linkElement.textContent = "Login to eloq";
   
   document.getElementById("linkPreview").innerHTML = '';
   document.getElementById("linkPreview").appendChild(linkElement);
 
-  // Update mailto link with clickable URL in body
-  var mailtoBody = "Login to eloq"
+  // Update mailto link with custom URL scheme in body
+  var mailtoBody = "Click the link below to login to eloq:\n\n";
+  mailtoBody += customUrlScheme; // Include the custom URL scheme here
   
   var mailtoLink = "mailto:recipient@example.com?subject=Subject&body=" + encodeURIComponent(mailtoBody);
   document.getElementById("customUrlLink").setAttribute("href", mailtoLink);

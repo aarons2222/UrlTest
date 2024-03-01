@@ -16,9 +16,8 @@
             
             var customUrlScheme = "eloqapp://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
             
-            // Open mail client with custom URL scheme
-            var mailtoLink = "mailto:recipient@example.com?subject=Launch Eloq App&body=<a href='" + customUrlScheme + "'>Click here to launch Eloq App</a>";
-            window.location.href = mailtoLink;
+            // Open Eloq app with custom URL scheme
+            window.location.href = customUrlScheme;
         }
     </script>
 

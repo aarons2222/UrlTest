@@ -55,7 +55,7 @@ function generateLink() {
   qrCodeDiv.appendChild(qrCodeImg);
 
   // Update mailto link
-  var mailtoLink = "mailto:recipient@example.com?subject=Subject&body=Click%20the%20link%20below%20to%20open%20the%20custom%20URL:%0A%0A" + encodeURIComponent(link);
+  var mailtoLink = "mailto:recipient@example.com?subject=Subject&body=" + encodeURIComponent("Click the link below to open the custom URL:\n\n" + link);
   document.getElementById("customUrlLink").setAttribute("href", mailtoLink);
 }
 

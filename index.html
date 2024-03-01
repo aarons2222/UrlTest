@@ -37,7 +37,7 @@ function generateLink() {
   var uniqueID = document.getElementById("uniqueID").value;
   var pin = document.getElementById("pin").value;
   
-  var link = "yourcustomurlscheme://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
+  var link = "myapp://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
   
   var linkElement = document.createElement("a");
   linkElement.setAttribute("href", link);

@@ -1,83 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Login Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch Eloq App with Custom URL Scheme</title>
 </head>
 <body>
+    <h1>Click the link below to launch Eloq app with custom URL scheme:</h1>
 
-<div style="margin: 20px;">
-  <form id="loginForm">
-    <label for="uniqueID">UniqueID:</label><br>
-    <input type="text" id="uniqueID" name="uniqueID" placeholder="Enter your UniqueID" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;"><br>
+    <script>
+        function launchEloqApp() {
+            // Replace 'uniqueID' and 'pin' with your actual values
+            var uniqueID = '123456';
+            var pin = '7890';
+            
+            var customUrlScheme = "eloqapp://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
+            
+            // Open mail client with custom URL scheme
+            window.location.href = "mailto:recipient@example.com?subject=Launch Eloq App&body=" + encodeURIComponent(customUrlScheme);
+        }
+    </script>
 
-    <a href="#" id="customUrlLink" style="margin-bottom: 10px; display: block;">Click here to login to eloq</a>
-
-    <label for="pin">PIN:</label><br>
-    <input type="text" id="pin" name="pin" placeholder="Enter your PIN" style="margin-bottom: 10px; width: 300px; height: 40px; font-size: 16px;"><br>
-    
-    <button type="button" onclick="generateLink()" style="width: 200px; height: 40px; font-size: 16px;">Generate Link</button>
-    <button type="button" onclick="copyToClipboard()" style="width: 200px; height: 40px; font-size: 16px;">Copy to Clipboard</button>
-
-
-  </form>
-
-  <div style="margin-top: 20px;">
-    <p>Generated URL Preview:</p>
-    <p id="linkPreview" style="background-color: #f0f0f0; padding: 10px;"></p>
-  </div>
-</div>
-
-<script>
-function generateLink() {
-  var uniqueID = document.getElementById("uniqueID").value;
-  var pin = document.getElementById("pin").value;
-  
-  var customUrlScheme = "myapp://login?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
-  
-  var linkElement = document.createElement("a");
-  linkElement.setAttribute("href", customUrlScheme);
-  linkElement.setAttribute("target", "_blank");
-  linkElement.textContent = "Login to eloq";
-  
-  document.getElementById("linkPreview").innerHTML = '';
-  document.getElementById("linkPreview").appendChild(linkElement);
-
-  // Update mailto link with custom URL scheme in body
-  var mailtoBody = "Click the link below to login to eloq:\n\n";
-  mailtoBody += customUrlScheme; // Include the custom URL scheme here
-  
-  var mailtoLink = "mailto:recipient@example.com?subject=Subject&body=" + encodeURIComponent(mailtoBody);
-  document.getElementById("customUrlLink").setAttribute("href", mailtoLink);
-}
-
-function copyToClipboard() {
-  var link = document.getElementById("linkPreview").querySelector('a').getAttribute('href');
-
-  navigator.clipboard.writeText(link)
-  
-  // Create a temporary textarea element
-  var tempTextArea = document.createElement("textarea");
-  tempTextArea.textContent = link;
-  document.body.appendChild(tempTextArea);
-  
-  // Select and copy the link
-  tempTextArea.select();
-  document.execCommand("copy");
-  
-  // Remove the temporary textarea
-  document.body.removeChild(tempTextArea);
-  
-  alert("Link copied to clipboard!");
-}
-
-// Open email client when customUrlLink is clicked
-document.getElementById("customUrlLink").addEventListener("click", function(event) {
-  var customUrl = event.target.getAttribute("href");
-  var emailWindow = window.open(customUrl, '_blank');
-  if (emailWindow) {
-    emailWindow.focus();
-  } else {
-    alert('Pl
+    <button onclick="launchEloqApp()">Launch Eloq App</button>
+</body>
+</html>

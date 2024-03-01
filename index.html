@@ -46,10 +46,7 @@ function generateLink() {
   document.getElementById("linkPreview").appendChild(linkElement);
 
   // Update mailto link with clickable URL in body
-  var mailtoBody = "Click the link below to open the custom URL:\n\n";
-  mailtoBody += "https://www.twixlmedia.com"; // Include the URL here
-  
-  var mailtoLink = "mailto:recipient@example.com?subject=Subject&body=" + encodeURIComponent(mailtoBody);
+  var mailtoLink = "mailto:recipient@example.com?subject=Subject&body=Click%20the%20link%20below%20to%20open%20the%20custom%20URL:%0A%0Ahttps%3A%2F%2Fwww.twixlmedia.com";
   document.getElementById("customUrlLink").setAttribute("href", mailtoLink);
 }
 

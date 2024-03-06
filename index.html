@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Launcher</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Detection</title>
+<script>
+function checkPlatform() {
+    var userAgent = navigator.userAgent;
+
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return 'iOS';
+    } else if (/Android/.test(userAgent)) {
+        return 'Android';
+    } else {
+        return 'Neither iOS nor Android';
+    }
+}
+
+window.onload = function() {
+    var platform = checkPlatform();
+    console.log("Platform: " + platform);
+    // You can do whatever you want with the platform information here
+    // For example, update HTML content based on the platform
+    document.getElementById("platform").innerText = platform;
+};
+</script>
 </head>
 <body>
-    <div style="text-align: center; margin-top: 50px;">
-        <h1>Email Launcher</h1>
-        <p>Send email with app link</p>
-        <button onclick="launchEmail()">Launch Email</button>
-    </div>
-
-    <script>
-        function launchEmail() {
-            var uniqueID = "123456"; // Replace with your actual unique ID
-            var pin = "7890"; // Replace with your actual PIN
-            var url = "https://aarons2222.github.io/UrlTest/Login.html?UNIQUEID=" + encodeURIComponent(uniqueID) + "&PIN=" + encodeURIComponent(pin);
-            var emailSubject = "Login to Website";
-            var emailBody = "Please click the following link to login:\n\n" + url;
-            var mailtoLink = "mailto:?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
-            window.location.href = mailtoLink;
-        }
-    </script>
+<p>Platform: <span id="platform"></span></p>
 </body>
 </html>
